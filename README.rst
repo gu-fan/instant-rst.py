@@ -47,13 +47,13 @@ API
 +======================+============+============================+===============================================================+
 | Show Converted file  |  ``GET``   | ``?file=/pat/to/file.rst`` | ``curl http://localhost:5676?file=/tmp/test.rst``             |
 |                      |            |                            |                                                               |
-|                      |            | When file is ommited,      |                                                               |
+|                      |            | When file is omitted,      |                                                               |
 |                      |            | Then a default index page  |                                                               |
 |                      |            | will be opened.            |                                                               |
 +----------------------+------------+----------------------------+---------------------------------------------------------------+
 | Refresh window with  |  ``POST``  | ``{file:file.rst, p:pos}`` | ``curl -d file='file.name' -d p='0.3' http://localhost:5676`` |
 |                      |            |                            |                                                               |
-|                      |            | When file is ommited,      |                                                               |
+|                      |            | When file is omitted,      |                                                               |
 | a file and scroll to |  or        | Then will only scroll to   |                                                               |
 | a position(a float)  |  ``PUT``   | that pos                   |                                                               |
 +----------------------+------------+----------------------------+---------------------------------------------------------------+
