@@ -14,12 +14,13 @@ Install
 .. code:: sh
 
    # Got some issue on pypi
-   sudo pip install https://github.com/Rykka/instant_rst.py/archive/master.zip
+   # sudo pip install instant-rst
+   sudo pip install https://github.com/Rykka/instant-rst.py/archive/master.zip
 
 Useage
 ======
 
-usage: instantRst.py [-h] [-f FILENAME] [-b BROWSER] [-p PORT]
+usage: instantRst [-h] [-f FILENAME] [-b BROWSER] [-p PORT]
 
 optional arguments:
 
@@ -34,7 +35,7 @@ optional arguments:
                       Default is '5676'
 
 To convert a rst document
-    You can start with ``python server.py -f file.rst``
+    You can start with ``instantRst -f file.rst``
 
     Then the brower will opened the converted file at ``http://localhost:<port>``
 
