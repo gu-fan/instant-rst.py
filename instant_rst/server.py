@@ -5,9 +5,11 @@ import os, sys
 
 from instant_rst.rst import html_body
 
-from instant_rst.config import DEFAULT_FILE, SECRET_KEY
+from instant_rst.config import DEFAULT_FILE, SECRET_KEY,TEMPLATE_DIR,STATIC_DIR
 
-app = Flask(__name__)
+app = Flask(__name__,
+        static_folder=STATIC_DIR,
+        template_folder=TEMPLATE_DIR)
 # app.debug = True
 app.config['SECRET_KEY'] = SECRET_KEY
 
