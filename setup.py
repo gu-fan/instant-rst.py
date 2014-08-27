@@ -14,13 +14,13 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    version='0.9.0',
+    version='0.9.0.2',
 
     description='Preview Rst Document Instantly ',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/rykka/instant_rst.py',
+    url='https://github.com/rykka/instant-rst.py',
 
     # Author details
     author='Rykka',
@@ -56,9 +56,9 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=find_packages('instant_rst'),
+    # packages=find_packages('instant_rst'),
     # package_dir = {'':'instant_rst'}, 
-    # packages=['instant_rst'],
+    packages=['instant_rst'],
 
     # List run-time dependencies here.  These will be installed by pip when your
     # project is installed. For an analysis of "install_requires" vs pip's
@@ -86,7 +86,7 @@ setup(
     #                                     'instant_rst/templates/index.rst'])],
 
     include_package_data=True,
-    scripts=['scripts/instant_rst.py'],
+    scripts=['scripts/instantRst'],
 
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow

@@ -2,6 +2,8 @@
 InstantRst Server
 #################
 
+:version: 0.9
+
 This is a server for preview rst document instantly.
 
 Install
@@ -9,16 +11,18 @@ Install
 
 .. code:: sh
 
-   sudo pip install instant_rst
+   # Got some issue on pypi
+   sudo pip install https://github.com/Rykka/instant_rst.py/archive/master.zip
 
 Useage
 ======
 
-usage: instant_rst.py [-h] [-f FILENAME] [-b BROWSER] [-p PORT]
+usage: instantRst.py [-h] [-f FILENAME] [-b BROWSER] [-p PORT]
 
 optional arguments:
 
--h, --help          show this help message and exit
+-h, --help          
+                    show this help message and exit
 -f FILENAME, --file FILENAME
                     The local filename for Converting
 -b BROWSER, --browser BROWSER
