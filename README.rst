@@ -6,6 +6,8 @@ InstantRst Server
 
 This is a server for preview rst document instantly.
 
+You can use it with instantRst.vim_
+
 Install
 =======
 
@@ -58,3 +60,4 @@ API
 | Close Server         | ``DELETE`` |                            | ``curl -X DELETE http://localhost:5676``                      |
 +----------------------+------------+----------------------------+---------------------------------------------------------------+
 
+.. _instantRst.vim: https://github.com/Rykka/InstantRst
