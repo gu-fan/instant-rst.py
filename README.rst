@@ -8,6 +8,16 @@ This is a server for preview rst document instantly.
 
 You can use it with instantRst.vim_
 
+.. figure:: https://github.com/Rykka/github_things/raw/master/image/rst_quick_start.gif 
+    :align: center
+
+    Screencast with riv.vim_ and instantRst.vim_
+
+    Theme with rhythm.css_
+
+----
+
+
 Install
 =======
 
@@ -62,3 +72,5 @@ API
 +----------------------+------------+----------------------------+---------------------------------------------------------------+
 
 .. _instantRst.vim: https://github.com/Rykka/InstantRst
+.. _riv.vim: https://github.com/Rykka/riv.vim
+.. _rhythm.css: https://github.com/Rykka/rhythm.css
