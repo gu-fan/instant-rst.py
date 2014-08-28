@@ -14,7 +14,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    version='0.9.0.2',
+    version='0.9.0.3',
 
     description='Preview Rst Document Instantly ',
     long_description=long_description,
@@ -72,7 +72,7 @@ setup(
     # package_data={
     #     'scripts': ['scripts/instantRst.py'],
     # },
-    package_data={'static': ['rhythm.css'],
+    package_data={'static': ['rhythm.css', 'molokai.css'],
                 'templates':['index.html', 'index.rst']},
     # package_data = {
     #     '': ['*.txt', '*.rst','*.css','*.html'],
