@@ -73,3 +73,17 @@ API
 .. _riv.vim: https://github.com/Rykka/riv.vim
 .. _rhythm.css: https://github.com/Rykka/rhythm.css
 .. _InstantRst: https://github.com/Rykka/InstantRst
+
+Issues
+------
+for debian user, you may need to install gevent manually
+
+::
+
+    sudo apt-get install libevent-dev
+    sudo apt-get install python-all-dev
+    sudo pip install greenlet
+    sudo pip install gevent
+
+
+
