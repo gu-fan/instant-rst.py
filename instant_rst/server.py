@@ -15,6 +15,11 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 socketio = SocketIO(app)
 
+def run(port, template_dir, static_dir):
+    app.template_folder = template_dir
+    app.static_folder = static_dir
+    socketio.run(app, port=port)
+
 
 @app.route("/", methods=['GET','PUT','POST','DELETE'])
 def index():

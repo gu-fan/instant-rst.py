@@ -4,14 +4,15 @@
 ''' Simply open browser 1 seconds after start server,
     As we don't want to use hooking
     which need rewrite HttpServer.run() '''
+import os
+import sys
 import time
-import sys,os
 
 from multiprocessing import Process
 
 from instant_rst import args
 from instant_rst.http import post
-from instant_rst.server import socketio,app 
+from instant_rst.server import run
 
 def browse(b, port, filename):
     time.sleep(1)
@@ -26,7 +27,9 @@ p = Process(target=browse, args=(ag.browser, ag.port, ag.filename))
 p.start()
 
 try:
-    socketio.run(app, port=int(ag.port))
+    run(port=int(ag.port),
+        template_dir=ag.template_dir,
+        static_dir=ag.static_dir)
 except:
     print '\nSome error/exception occurred.'
     print sys.exc_info()

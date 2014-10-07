@@ -28,7 +28,7 @@ Install
 Useage
 ======
 
-usage: instantRst [-h] [-f FILENAME] [-b BROWSER] [-p PORT]
+usage: instantRst [-h] [-f FILENAME] [-b BROWSER] [-p PORT] [-s STATIC_DIR] [-t TEMPLATE_DIR]
 
 optional arguments:
 
@@ -41,6 +41,15 @@ optional arguments:
                     Default is 'firefox'
 -p PORT, --port PORT  The port for server to use
                       Default is '5676'
+-t TEMPLATE_DIR, --template-dir TEMPLATE_DIR 
+                      Directory containing a template to 
+                      be used when rendering the output. 
+                      Defaults to a bundled rhythm.css_
+-s STATIC_DIR, --static-dir STATIC_DIR 
+                      The directory containing static 
+                      files used by the template.
+                      Defaults to a bundled rhythm.css_
+
 
 To convert a rst document
     You can start with ``instantRst -f file.rst``
