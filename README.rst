@@ -2,11 +2,17 @@
 InstantRst Server
 #################
 
-:version: 0.9
+:version: 0.9.0.5
+
+**WHAT'S NEW**
+    Now, You Can View The Page within lan.
+
+
 
 This is a server for preview rst document instantly.
 
 You can use it with instantRst.vim_
+
 
 .. figure:: https://github.com/Rykka/github_things/raw/master/image/rst_quick_start.gif
     :align: center

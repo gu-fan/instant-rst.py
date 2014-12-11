@@ -7,7 +7,7 @@
 
 <script>
 
-  var socket = io.connect('http://localhost:5676');
+  var socket = io.connect('{{ url }}');
   socket.on('connect', function (data) {
     socket.emit('socket connected', { my: 'data' });
   });

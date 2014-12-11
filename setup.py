@@ -14,7 +14,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    version='0.9.0.4',
+    version='0.9.0.9',
 
     description='Preview Rst Document Instantly ',
     long_description=long_description,
@@ -57,7 +57,7 @@ setup(
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
     # packages=find_packages('instant_rst'),
-    # package_dir = {'':'instant_rst'}, 
+    # package_dir = {'':'instant_rst'},
     packages=['instant_rst'],
 
     # List run-time dependencies here.  These will be installed by pip when your

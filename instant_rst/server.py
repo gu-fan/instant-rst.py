@@ -15,10 +15,14 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 socketio = SocketIO(app)
 
-def run(port, template_dir, static_dir):
+URL = 'http://127.0.0.1:5676'
+def run(host, port, template_dir, static_dir):
     app.template_folder = template_dir
     app.static_folder = static_dir
-    socketio.run(app, port=port)
+    global URL
+    URL =  'http://' + host + ':' + str(port)
+    # To open port listening on lan ,we should pass host='0.0.0.0' to flask
+    socketio.run(app, port=port, host='0.0.0.0')
 
 
 @app.route("/", methods=['GET','PUT','POST','DELETE'])
@@ -49,9 +53,9 @@ def index():
         if os.path.isfile(f):
             with open(f,'r') as rst:
                 d = html_body(rst.read().decode('utf8'))
-                return render_template('index.html',HTML=d)
+                return render_template('index.html',HTML=d, url=URL)
         else:
-            return render_template('index.html')
+            return render_template('index.html', url=URL)
 
 def shutdown_server():
     exit = request.environ.get('werkzeug.server.shutdown')

@@ -14,9 +14,16 @@ from instant_rst import args
 from instant_rst.http import post
 from instant_rst.server import run
 
+import socket
+
+
+# get hostname of local LAN IP
+HOST = socket.gethostbyname(socket.gethostname())
+
 def browse(b, port, filename):
     time.sleep(1)
-    url = 'http://localhost:'+port
+    url =  'http://' + HOST + ':'+ port
+
     os.system(b+'  ' + url+ ' &')
     time.sleep(1)
     post(url, {'file': filename})
@@ -27,7 +34,7 @@ p = Process(target=browse, args=(ag.browser, ag.port, ag.filename))
 p.start()
 
 try:
-    run(port=int(ag.port),
+    run(host=HOST, port=int(ag.port),
         template_dir=ag.template_dir,
         static_dir=ag.static_dir)
 except:
