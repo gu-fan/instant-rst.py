@@ -6,19 +6,22 @@ from instant_rst.config import DEFAULT_FILE, DEFAULT_PORT, DEFAULT_BROWSER, \
 def parse():
     parser = argparse.ArgumentParser(description='Preview rst Instantly')
     parser.add_argument('-f', '--file', dest='filename',
-                default=DEFAULT_FILE,
-                help='The local filename for Converting')
+                        default=DEFAULT_FILE,
+                        help='The local filename for Converting')
     parser.add_argument('-b', '--browser', dest='browser',
-                default='firefox',
-                help='The browser command for viewing')
+                        default='firefox',
+                        help='The browser command for viewing')
     parser.add_argument('-p', '--port', dest='port',
-                default='5676',
-                help='The port for server to use')
+                        default='5676',
+                        help='The port for server to use')
     parser.add_argument('-s', '--static-dir', dest='static_dir',
                         default=STATIC_DIR,
                         help='Directory with static files for rendering')
     parser.add_argument('-t', '--template-dir', dest='template_dir',
                         default=TEMPLATE_DIR,
                         help='Directory with template files for rendering')
+    parser.add_argument('-l', '--localhost-only', dest='localhost_only',
+                        action='store_true',
+                        help='Only use localhost, disable lan. default: False')
 
     return parser.parse_args()
