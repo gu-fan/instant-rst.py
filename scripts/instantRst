@@ -17,8 +17,6 @@ from instant_rst.server import run
 import socket
 
 
-# get hostname of local LAN IP
-HOST = socket.gethostbyname(socket.gethostname())
 
 def browse(b, port, filename):
     time.sleep(1)
@@ -29,6 +27,12 @@ def browse(b, port, filename):
     post(url, {'file': filename})
 
 ag = args.parse()
+
+if ag.localhost_only:
+    HOST = "localhost"
+else:
+    # get hostname of local LAN IP
+    HOST = socket.gethostbyname(socket.gethostname())
 
 p = Process(target=browse, args=(ag.browser, ag.port, ag.filename))
 p.start()

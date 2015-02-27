@@ -20,5 +20,8 @@ def parse():
     parser.add_argument('-t', '--template-dir', dest='template_dir',
                         default=TEMPLATE_DIR,
                         help='Directory with template files for rendering')
+    parser.add_argument('-l', '--localhost-only', dest='localhost_only',
+                        action='store_true',
+                        help='Only use localhost, disable lan. default: False')
 
     return parser.parse_args()
