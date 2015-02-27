@@ -55,6 +55,9 @@ optional arguments:
                       The directory containing static 
                       files used by the template.
                       Defaults to a bundled rhythm.css_
+-l, --localhost-only  
+                      Only use localhost, disable lan ip 
+                      default: False
 
 
 To convert a rst document
