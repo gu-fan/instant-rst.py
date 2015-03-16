@@ -9,8 +9,8 @@ def parse():
                         default=DEFAULT_FILE,
                         help='The local filename for Converting')
     parser.add_argument('-b', '--browser', dest='browser',
-                        default='firefox',
-                        help='The browser command for viewing')
+                        default='',
+                        help='The browser command for viewing, empty will use default')
     parser.add_argument('-p', '--port', dest='port',
                         default='5676',
                         help='The port for server to use')

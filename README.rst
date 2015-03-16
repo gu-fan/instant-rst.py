@@ -44,7 +44,7 @@ optional arguments:
                     The local filename for Converting
 -b BROWSER, --browser BROWSER
                     The browser command for viewing
-                    Default is 'firefox'
+                    Default is '' for using system default
 -p PORT, --port PORT  The port for server to use
                       Default is '5676'
 -t TEMPLATE_DIR, --template-dir TEMPLATE_DIR 
