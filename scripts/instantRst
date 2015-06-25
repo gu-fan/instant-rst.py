@@ -74,7 +74,8 @@ p.start()
 try:
     run(host=HOST, port=int(ag.port),
         template_dir=ag.template_dir,
-        static_dir=ag.static_dir)
+        static_dir=ag.static_dir,
+        additional_dirs=ag.additional_dirs)
 except:
     print '\nSome error/exception occurred.'
     print sys.exc_info()

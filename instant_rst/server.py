@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, jsonify
+from flask import Flask, render_template, request, url_for, jsonify, send_from_directory
 from flask.ext.socketio import SocketIO, emit
 
 import os, sys
@@ -16,13 +16,27 @@ app.config['SECRET_KEY'] = SECRET_KEY
 socketio = SocketIO(app)
 
 URL = 'http://127.0.0.1:5676'
-def run(host, port, template_dir, static_dir):
+ADDITIONAL_DIRS = []
+def run(host, port, template_dir, static_dir, additional_dirs):
+    print(additional_dirs)
     app.template_folder = template_dir
     app.static_folder = static_dir
     global URL
     URL =  'http://' + host + ':' + str(port)
+    global ADDITIONAL_DIRS
+    ADDITIONAL_DIRS = additional_dirs
     # To open port listening on lan ,we should pass host='0.0.0.0' to flask
     socketio.run(app, port=port, host='0.0.0.0')
+
+
+@app.route("/<path:directory>/<path:path>")
+def serve_additional_file(directory, path):
+    for additional_dir in ADDITIONAL_DIRS:
+        if os.path.basename(additional_dir) == directory:
+            return send_from_directory(additional_dir, path)
+
+    return '', 404
+
 
 
 @app.route("/", methods=['GET','PUT','POST','DELETE'])
@@ -66,4 +80,6 @@ def shutdown_server():
 @socketio.on('my event')
 def test_message(message):
     emit('my response', {'data': 'got it!'})
+
+
 
