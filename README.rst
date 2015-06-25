@@ -31,8 +31,8 @@ Install
    # sudo pip install instant-rst
    sudo pip install https://github.com/Rykka/instant-rst.py/archive/master.zip
 
-Useage
-======
+Usage
+=====
 
 usage: instantRst [-h] [-f FILENAME] [-b BROWSER] [-p PORT] [-s STATIC_DIR] [-t TEMPLATE_DIR]
 
@@ -58,6 +58,10 @@ optional arguments:
 -l, --localhost-only  
                       Only use localhost, disable lan ip 
                       default: False
+
+-d, --additional-dir
+                      Additional directories to serve.
+                      One time per directory.
 
 
 To convert a rst document

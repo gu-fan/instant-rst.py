@@ -23,9 +23,9 @@ def parse():
     parser.add_argument('-l', '--localhost-only', dest='localhost_only',
                         action='store_true',
                         help='Only use localhost, disable lan. default: False')
-    parser.add_argument('-d', '--aditional-dirs', dest='additional_dirs',
+    parser.add_argument('-d', '--aditional-dir', dest='additional_dirs',
                         action='append',
                         default=[],
-                        help='List of additional directories to serve')
+                        help='Additional directories to serve')
 
     return parser.parse_args()
