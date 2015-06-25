@@ -18,7 +18,6 @@ socketio = SocketIO(app)
 URL = 'http://127.0.0.1:5676'
 ADDITIONAL_DIRS = []
 def run(host, port, template_dir, static_dir, additional_dirs):
-    print(additional_dirs)
     app.template_folder = template_dir
     app.static_folder = static_dir
     global URL
@@ -80,6 +79,5 @@ def shutdown_server():
 @socketio.on('my event')
 def test_message(message):
     emit('my response', {'data': 'got it!'})
-
 
 
