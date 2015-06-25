@@ -28,11 +28,11 @@ def run(host, port, template_dir, static_dir, additional_dirs):
     socketio.run(app, port=port, host='0.0.0.0')
 
 
-@app.route("/<path:directory>/<path:path>")
-def serve_additional_file(directory, path):
+@app.route("/<path:directory>/<path:filename>")
+def serve_additional_file(directory, filename):
     for additional_dir in ADDITIONAL_DIRS:
         if os.path.basename(additional_dir) == directory:
-            return send_from_directory(additional_dir, path)
+            return send_from_directory(additional_dir, filename)
 
     return '', 404
 
