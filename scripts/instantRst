@@ -55,7 +55,7 @@ def browse(b, port, filename):
                     # xdg-open or gnome-open will use the default app only.
                     os.system('"' + b + '" ' + url + ' &')
                 else:
-                    os.system(o + url + ' &')
+                    os.system(o + ' ' + url + ' &')
                 break
     time.sleep(1)
     post(url, {'file': filename})
