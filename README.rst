@@ -2,13 +2,13 @@
 InstantRst Server
 #################
 
-:version: 0.9.2.0
+:version: 0.9.2.2
 
 **WHAT'S NEW**
 
     1. static files are served, the file in the same dir can be get with ``_static/file``
     2. The index file will always show from remote's main file
-    3. Improved Style
+    3. Improved Style: Using mars.css
     4. add debug to stop open browser
     5. add error log and error page
 
@@ -172,7 +172,13 @@ start test with local package::
 
 change to static/template file should change setup.py and manifest.in
 
-publish to pypi
+publish to pypi::
+
+    # register
+    # python setup.py register -r pypi
+
+    python setup.py sdist upload -r pypi
+
 
 Error
 =====
