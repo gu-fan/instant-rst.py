@@ -12,7 +12,7 @@ from multiprocessing import Process
 
 from instant_rst import args
 from instant_rst.http import post
-from instant_rst.server import run
+from instant_rst.server import run, shutdown_server
 
 import socket
 
@@ -68,16 +68,21 @@ else:
     # get hostname of local LAN IP
     HOST = socket.gethostbyname(socket.gethostname())
 
-p = Process(target=browse, args=(ag.browser, ag.port, ag.filename))
-p.start()
+
+if not ag.debug:
+    p = Process(target=browse, args=(ag.browser, ag.port, ag.filename))
+    p.start()
 
 try:
     run(host=HOST, port=int(ag.port),
         template_dir=ag.template_dir,
         static_dir=ag.static_dir,
-        additional_dirs=ag.additional_dirs)
+        additional_dirs=ag.additional_dirs,
+        default_file=ag.filename
+        )
 except:
     print '\nSome error/exception occurred.'
     print sys.exc_info()
-    p.terminate()
+    if not ag.debug:
+        p.terminate()
     sys.exit()

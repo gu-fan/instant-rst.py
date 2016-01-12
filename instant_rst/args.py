@@ -28,4 +28,9 @@ def parse():
                         default=[],
                         help='Additional directories to serve')
 
+    parser.add_argument('--debug',
+                        action='store_true',
+                        default=False,
+                        help='debug mode or not')
+
     return parser.parse_args()

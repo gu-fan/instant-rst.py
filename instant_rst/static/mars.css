@@ -1,9 +1,3 @@
-/*!
- * Rhythm.css v0.6.2 (https://github.com/Rykka/rhythm.css)
- * Copyright 2014-2016 
- * Licensed under  ()
- */
-
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -234,25 +228,25 @@ The right padding separates the table cells. */
 @media (min-width: 961px) {
   /* tablet, landscape iPad, lo-res laptops ands desktops */
   .document {
-    width: 940px;
+    width: 840px;
   }
 }
 @media (min-width: 1025px) {
   /* big landscape tablets, laptops, and desktops */
   .document {
-    width: 940px;
+    width: 840px;
   }
 }
 @media (min-width: 1281px) {
   /* hi-res laptops and desktops */
   .document {
-    width: 940px;
+    width: 840px;
   }
 }
 /*}}}*/
 body {
-  font-family: 700 2.6656rem/1.1em "Open Sans", arial, sans-serif;
-  font-size: 16px;
+  font-family: 'Sentinel SSm A', 'Sentinel SSm B', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  font-size: 18px;
 }
 h1,
 h2,
@@ -266,7 +260,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 700 2.6656rem/1.1em "Open Sans", arial, sans-serif;
+  font-family: 'Sentinel SSm A', 'Sentinel SSm B', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
   line-height: 1.1;
   color: inherit;
 }
@@ -304,10 +298,30 @@ h3.section-subtitle,
 h4.section-subtitle,
 h5.section-subtitle,
 h6.section-subtitle {
-  margin-top: 4.4px;
+  margin-top: 10px;
+}
+.section h2,
+.section h3,
+.section h4,
+.section h5,
+.section h6 {
+  margin-bottom: 4px;
+}
+.section h1 {
+  font-size: 28.8px;
+  margin-bottom: 6px;
+}
+.section h2 {
+  font-size: 25.6px;
+}
+.section h3 {
+  font-size: 23.2px;
+}
+.section h4 {
+  font-size: 18.4px;
 }
 h1.title {
-  font-size: 40px;
+  font-size: 45px;
   text-align: center;
 }
 h2.subtitle {
@@ -317,7 +331,7 @@ span.section-subtitle {
   font-size: 80%;
 }
 .title {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
 }
 h1,
@@ -326,8 +340,8 @@ h2,
 .h2,
 h3,
 .h3 {
-  margin-top: 11px;
-  margin-bottom: 7.85714286px;
+  margin-top: 25px;
+  margin-bottom: 17.85714286px;
 }
 h1 small,
 .h1 small,
@@ -349,8 +363,8 @@ h5,
 .h5,
 h6,
 .h6 {
-  margin-top: 7.85714286px;
-  margin-bottom: 5.5px;
+  margin-top: 17.85714286px;
+  margin-bottom: 12.5px;
 }
 h4 small,
 .h4 small,
@@ -367,22 +381,22 @@ h6 .small,
   font-size: 75%;
 }
 h1 {
-  font-size: 32px;
+  font-size: 36px;
 }
 h2 {
-  font-size: 25px;
+  font-size: 32px;
 }
 h3 {
-  font-size: 23px;
+  font-size: 29px;
 }
 h4 {
-  font-size: 20px;
+  font-size: 23px;
 }
 h5 {
-  font-size: 16px;
+  font-size: 18px;
 }
 h6 {
-  font-size: 14px;
+  font-size: 16px;
 }
 h1 tt.docutils,
 h2 tt.docutils,
@@ -420,37 +434,62 @@ blockquote:after {
   color: #333333;
 }
 .document a {
-  color: #279cf5;
+  color: #CC5233;
   text-decoration: none;
 }
 .document a:hover {
-  color: #0975c6;
+  color: #8f3924;
 }
 .document p {
-  line-height: 1;
-  margin: 0 0 11px;
+  line-height: 1.5;
+  margin: 0 0 25px;
+}
+.document p img {
+  margin: 0;
 }
 .document a:hover {
   text-decoration: underline;
 }
 .document pre {
-  margin-bottom: 15.4px;
+  margin-bottom: 35px;
 }
 .document img {
-  margin: 11px auto;
+  max-width: 100%;
+  margin: 10px auto 25px;
 }
 hr.docutils {
   border: none;
-  border-bottom: 2px dashed #cccacc;
-  margin: 33px 0;
+  border-bottom: 2px dashed #CCCACC;
+  margin: 25px 0;
+}
+.document .title {
+  margin: 25px 0;
+  padding: 25px 0;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+}
+.document .subtitle {
+  margin-top: -10px;
+  font-size: 29px;
+}
+.document blockquote a {
+  color: #CC5233;
+}
+.document blockquote a:focus,
+.document blockquote a:hover,
+.document blockquote a:active {
+  color: #e09785;
+}
+.document blockquote a:visited {
+  color: #a34229;
 }
 dl.docutils dd {
-  margin-bottom: 4.4px;
+  margin-bottom: 10px;
 }
 dl.docutils dt {
-  margin-top: 15.4px;
-  margin-bottom: 4.4px;
-  margin-left: 4.4px;
+  margin-top: 35px;
+  margin-bottom: 10px;
+  margin-left: 10px;
   font-weight: bold;
 }
 span.classifier {
@@ -461,29 +500,33 @@ span.classifier-delimiter {
 }
 ul,
 ol {
-  line-height: 1.5;
-  margin: 0 0 15.4px 4.4px;
+  line-height: 1.4;
+  margin: 0 0 75px 10px;
   padding: 0;
+}
+ul.auto-toc,
+ol.auto-toc {
+  line-height: 1.2;
 }
 ul ul,
 ul ol,
 ol ul,
 ol ol {
-  margin: 11px 0 0 4.4px;
+  margin: 10px 0 0 10px;
 }
 ul li,
 ol li {
-  margin: 0 0 11px 4.4px;
+  margin: 0 0 2.5px 10px;
 }
 ul.auto-toc li {
-  margin: 0 0 4.4px 4.4px;
+  margin: 0 0 2.5px 10px;
 }
 ul.auto-toc ul {
-  margin: 4.4px 4.4px;
+  margin: 10px 10px;
 }
 ol.simple,
 ul.simple {
-  margin-bottom: 11px;
+  margin-bottom: 25px;
 }
 ol.arabic {
   list-style: decimal;
@@ -501,23 +544,23 @@ ol.upperroman {
   list-style: upper-roman;
 }
 table.docutils {
-  margin-top: 4.4px;
-  margin-bottom: 15.4px;
+  margin-top: 10px;
+  margin-bottom: 25px;
   width: 100%;
 }
 table.docutils th {
-  padding: 4.4px;
+  padding: 10px;
   text-align: left;
 }
 table.docutils td {
-  padding: 4.4px;
+  padding: 10px;
 }
 table.docutils th,
 table.docutils td {
-  border: 1px dotted #aeadad;
+  border: 1px dotted #AEADAD;
 }
 table.docutils th {
-  border-bottom: 1px solid #aeadad;
+  border-bottom: 1px solid #AEADAD;
 }
 table.docutils.citation th,
 table.docutils.citation td,
@@ -542,7 +585,7 @@ table.docutils ol li {
 }
 table tbody > tr:nth-child(odd) > td,
 table tbody > tr:nth-child(odd) > th {
-  background-color: #f7f7ed;
+  background-color: #F7F7ED;
 }
 table.field-list tbody > tr:nth-child(odd) > td,
 table.field-list tbody > tr:nth-child(odd) > th,
@@ -558,23 +601,23 @@ table.field-list {
   width: auto;
 }
 table.option-list {
-  border: 1px dotted #aeadad;
+  border: 1px dotted #AEADAD;
 }
 span.option {
   white-space: nowrap;
 }
 table.docinfo {
   width: auto;
-  margin: 15.4px 33px;
+  margin: 35px 75px;
 }
 table.citation {
   width: auto;
-  border-left: solid 2px #279cf5;
+  border-left: solid 2px #CC5233;
   margin-left: 1px ;
 }
 table.footnote {
   width: auto;
-  border-left: solid 2px #279cf5;
+  border-left: solid 2px #CC5233;
   margin-left: 1px;
 }
 p.label {
@@ -584,24 +627,24 @@ table.docutils td,
 table.docutils th,
 table.docinfo td,
 table.docinfo th {
-  padding-left: 4.4px;
-  padding-right: 4.4px;
+  padding-left: 10px;
+  padding-right: 10px;
   vertical-align: top;
 }
 table.docinfo td {
-  padding: 4.4px;
+  padding: 10px;
 }
 table.docutils th.field-name,
 table.docinfo th.docinfo-name {
   line-height: 1.2;
   font-weight: bold ;
-  font-family: 700 2.6656rem/1.1em "Open Sans", arial, sans-serif;
+  font-family: 'Sentinel SSm A', 'Sentinel SSm B', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
   text-align: left ;
   white-space: nowrap ;
-  padding: 4.4px;
+  padding: 10px;
 }
 p.attribution {
-  font-family: 700 2.6656rem/1.1em "Open Sans", arial, sans-serif;
+  font-family: 'Sentinel SSm A', 'Sentinel SSm B', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
   font-weight: bold;
   font-style: italic;
   text-align: right ;
@@ -609,29 +652,31 @@ p.attribution {
 }
 .document blockquote {
   border-left: 3px solid #eeeeee;
-  margin: 0 0 15.4px;
-  padding: 12px 11px;
+  margin: 0 0 35px;
+  padding: 12px 25px;
 }
 blockquote.epigraph {
-  margin: 15.4px 33px;
+  margin: 35px 75px;
 }
 div.line-block {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   display: block ;
-  margin-top: 11px;
-  margin-bottom: 11px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 div.line-block div.line {
-  background-color: #f7f7f7;
-  margin-top: 1.1px;
-  margin-bottom: 1.1px;
+  background-color: #F7F7F7;
+  padding: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 div.line-block div.line-block {
   margin-top: 0 ;
   margin-bottom: 0 ;
-  margin-left: 15.4px;
+  margin-left: 35px;
 }
 .document pre {
-  padding: 11px;
+  padding: 25px;
   line-height: 1.4;
 }
 pre.address {
@@ -643,28 +688,28 @@ pre.literal-block,
 pre.doctest-block,
 pre.math,
 pre.code {
-  margin-left: 15.4px;
-  margin-right: 15.4px;
+  margin-left: 35px;
+  margin-right: 35px;
 }
 pre.code .ln {
   color: grey;
 }
 .literal,
 .literal-block {
-  border: 1px dotted #cacbcc;
-  background-color: #f7f7f7;
+  border: 1px dotted #CACBCC;
+  background-color: #F7F7F7;
 }
 pre.doctest-block {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  border: 1px dotted #ccccb4;
-  margin-left: 15.4px;
-  margin-right: 15.4px;
-  background-color: #f7f7ed;
+  border: 1px dotted #CCCCB4;
+  margin-left: 35px;
+  margin-right: 35px;
+  background-color: #F7F7ED;
 }
 pre.code.literal-block {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  border: 1px dotted #ccccb4;
-  color: #faf7ed;
+  border: 1px dotted #CCCCB4;
+  color: #FAF7ED;
   background-color: #141412;
 }
 tt.literal {
@@ -681,46 +726,66 @@ div.important,
 div.note,
 div.tip,
 div.warning {
-  margin: 15.4px;
-  border: 1px dotted #777777;
-  padding: 11px;
+  margin: 25px;
+  border: 1px dotted #CCCACC;
+  padding: 0 0 6px 0;
+}
+div.admonition p,
+div.attention p,
+div.caution p,
+div.danger p,
+div.error p,
+div.hint p,
+div.important p,
+div.note p,
+div.tip p,
+div.warning p {
+  margin: 5px;
+  padding: 2px 5px;
 }
 div.admonition p.admonition-title,
+div.attention p.admonition-title,
 div.hint p.admonition-title,
 div.important p.admonition-title,
 div.note p.admonition-title,
+div.caution p.admonition-title,
+div.warning p.admonition-title,
+div.danger p.admonition-title,
+div.error p.admonition-title,
 div.tip p.admonition-title {
   font-weight: bold ;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 0 6px 0;
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
 }
 div.danger p.admonition-title,
 div.error p.admonition-title {
-  color: #d9423d;
-  font-weight: bold ;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #D9423D;
 }
 div.admonition p.admonition-title,
 div.caution p.admonition-title,
 div.warning p.admonition-title {
-  color: #f0a843;
-  font-weight: bold ;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #F0A843;
 }
 div.attention p.admonition-title,
 div.important p.admonition-title {
-  color: #56cc56;
+  background-color: #56CC56;
 }
 div.note p.admonition-title,
 div.hint p.admonition-title,
 div.tip p.admonition-title {
-  color: #4dc4e8;
+  background-color: #4DC4E8;
 }
 /* Directive: sidebar/rubric{{{2*/
 div.sidebar {
-  margin: 0 0 4.4px 11px;
-  border: 1px dotted #cacbcc;
-  padding: 11px;
-  background-color: #f7f7ed;
+  margin: 0 0 10px 25px;
+  border: 1px dotted #CACBCC;
+  padding: 25px;
+  background-color: #F7F7ED;
   width: 40% ;
   float: right ;
   clear: right;
@@ -731,7 +796,7 @@ div.sidebar p.rubric {
 }
 p.rubric {
   font-weight: bold ;
-  font-size: 20px;
+  font-size: 23px;
   color: #989997;
   text-align: center;
   margin-top: 10px ;
@@ -751,18 +816,20 @@ object[type="application/x-shockwave-flash"] {
   overflow: hidden;
 }
 div.figure {
-  margin-left: 15.4px;
-  margin-right: 15.4px;
+  margin-left: 35px;
+  margin-right: 35px;
 }
 div.figure p.caption {
   font-style: italic;
-  color: #888888;
-  margin-top: -11px;
-  margin-bottom: 11px;
+  color: #eeeeee;
+  margin-top: -25px;
+  margin-bottom: 35px;
+  text-align: center;
+  background: linear-gradient(rgba(255, 0, 0, 0), #888);
 }
 div.figure .legend {
-  margin-top: -11px;
-  margin-bottom: 11px;
+  margin-top: -25px;
+  margin-bottom: 25px;
   font-size: 90%;
   color: #888888;
 }
@@ -774,14 +841,14 @@ img.align-left,
 object.align-left {
   clear: left ;
   float: left ;
-  margin-right: 11px;
+  margin-right: 25px;
 }
 img.align-right,
 .figure.align-right,
 object.align-right {
   clear: right ;
   float: right ;
-  margin-left: 11px;
+  margin-left: 25px;
 }
 img.align-center,
 .figure.align-center,
@@ -791,7 +858,7 @@ object.align-center {
   margin-right: auto;
 }
 div.topic {
-  margin: 15.4px;
+  margin: 35px;
 }
 p.topic-title {
   font-weight: bold;
@@ -801,7 +868,7 @@ ul.auto-toc {
 }
 a.toc-backref {
   text-decoration: none ;
-  color: #000000;
+  color: black;
 }
 div.footer,
 div.header {
@@ -809,10 +876,10 @@ div.header {
   font-size: smaller;
 }
 div.abstract {
-  margin: 15.4px 33px;
+  margin: 35px 75px;
 }
 div.dedication p.topic-title {
-  font-family: 700 2.6656rem/1.1em "Open Sans", arial, sans-serif;
+  font-family: 'Sentinel SSm A', 'Sentinel SSm B', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
   font-weight: bold ;
   font-style: normal;
 }
@@ -821,26 +888,26 @@ div.abstract p.topic-title {
   text-align: center;
 }
 div.dedication {
-  margin: 15.4px 33px;
+  margin: 35px 75px;
   text-align: center ;
   font-style: italic;
 }
 span.problematic {
-  color: #d9423d;
+  color: #D9423D;
 }
 div.system-messages {
-  margin: 33px;
+  margin: 35px;
 }
 div.system-messages h1 {
-  color: #d9423d;
+  color: #D9423D;
 }
 div.system-message {
-  border: medium solid #999999;
-  margin: 11px;
-  padding: 11px;
+  border: medium dotted #999;
+  margin: 25px;
+  padding: 25px;
 }
 div.system-message p.system-message-title {
-  color: #d9423d;
+  color: #D9423D;
   font-weight: bold;
 }
 span.interpreted {
@@ -853,4 +920,3 @@ p.credits {
   font-style: italic ;
   font-size: smaller;
 }
-/*# sourceMappingURL=rhythm.css.map */

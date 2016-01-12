@@ -1,4 +1,4 @@
 include README.rst
 include instant_rst/static/*.css
-include instant_rst/templates/index.html
-include instant_rst/templates/index.rst
+include instant_rst/templates/*.html
+include instant_rst/templates/*.rst

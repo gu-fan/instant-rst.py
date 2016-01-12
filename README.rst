@@ -2,17 +2,19 @@
 InstantRst Server
 #################
 
-:version: 0.9.0.9
+:version: 0.9.2.0
 
 **WHAT'S NEW**
-    Now, You Can View The Page within lan.
 
-
+    1. static files are served, the file in the same dir can be get with ``_static/file``
+    2. The index file will always show from remote's main file
+    3. Improved Style
+    4. add debug to stop open browser
+    5. add error log and error page
 
 This is a server for preview rst document instantly.
 
 You can use it with instantRst.vim_
-
 
 .. figure:: https://github.com/Rykka/github_things/raw/master/image/rst_quick_start.gif
     :align: center
@@ -20,7 +22,6 @@ You can use it with instantRst.vim_
     riv.vim_ (vim) +  InstantRst_ (web server) +  rhythm.css_ (theme)
 
 ----
-
 
 Install
 =======
@@ -62,6 +63,9 @@ optional arguments:
 -d, --additional-dir
                       Additional directories to serve.
                       One time per directory.
+--debug-dir
+                      Debug mode,
+                      Do not open browser
 
 
 To convert a rst document
@@ -107,5 +111,70 @@ for debian user, you may need to install gevent manually
     sudo pip install greenlet
     sudo pip install gevent
 
+STATIC FILES
+============
 
+0. Default Static file:
 
+   the ``static/main.css|js`` is served there
+   
+   The instant rst's default theme is set there.
+
+   You can pass the ``-s`` for default static directory.
+
+1. Additional Static file:
+
+   You can pass the ``-d`` for additional static directory.
+
+   The basename of the directory is used as the static file's STATIC URL
+
+   e.g.:
+
+       You have a file named ``test/test.jpg``
+
+       You can start instantRst with ``instantRst -f test/test.rst -d test``
+
+       then the file is served with ``localhost:5676/test/test.jpg``
+
+2. Dynamic static file:
+
+   When using with dynamic files, you can post with '-dir=DYN_DIR_NAME' to update the ``DYN_STATIC_DIR``
+
+   e.g.:
+       
+       You have a file named ``test/test.jpg``
+
+       When you start instantRst ``instantRst -f test/test.rst``
+
+       The file is served with ``localhost:5676/_static/test.jpg``
+
+       When you switch to another file like ``test1/test.rst``
+       Then you can post with ``dir=test1`` or ``dir=~/rst/test1`` to change 
+       the static dir.
+
+Develop
+=======
+
+Contribution are welcomed.
+
+git clone the project::
+    
+    git clone 
+
+install local package::
+
+    sudo pip install . --upgrade
+
+start test with local package::
+
+    # localhost:5676
+    python scripts/instantRst --debug -f test/test.rst
+
+change to static/template file should change setup.py and manifest.in
+
+publish to pypi
+
+Error
+=====
+
+1. the template_dir option is not working
