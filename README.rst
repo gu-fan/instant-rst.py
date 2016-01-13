@@ -76,24 +76,30 @@ To convert a rst document
 API
 ===
 
-+----------------------+------------+----------------------------+---------------------------------------------------------------+
-| Action               | Http       |  Request Body or Param     | Curl Command                                                  |
-|                      | Method     |                            |                                                               |
-+======================+============+============================+===============================================================+
-| Show Converted file  |  ``GET``   | ``?file=/pat/to/file.rst`` | ``curl http://localhost:5676?file=/tmp/test.rst``             |
-|                      |            |                            |                                                               |
-|                      |            | When file is omitted,      |                                                               |
-|                      |            | Then a default index page  |                                                               |
-|                      |            | will be opened.            |                                                               |
-+----------------------+------------+----------------------------+---------------------------------------------------------------+
-| Refresh window with  |  ``POST``  | ``{file:file.rst, p:pos}`` | ``curl -d file='file.name' -d p='0.3' http://localhost:5676`` |
-|                      |            |                            |                                                               |
-|                      |            | When file is omitted,      |                                                               |
-| a file and scroll to |  or        | Then will only scroll to   |                                                               |
-| a position(a float)  |  ``PUT``   | that pos                   |                                                               |
-+----------------------+------------+----------------------------+---------------------------------------------------------------+
-| Close Server         | ``DELETE`` |                            | ``curl -X DELETE http://localhost:5676``                      |
-+----------------------+------------+----------------------------+---------------------------------------------------------------+
++----------------------+------------+-------------------------------------+-----------------------------------------------------------------------------+
+| Action               | Http       |  Request Body or Param              | Curl Command                                                                |
+|                      | Method     |                                     |                                                                             |
++======================+============+=====================================+=============================================================================+
+| Show Converted file  |  ``GET``   | ``?file=/pat/to/file.rst``          | ``curl http://localhost:5676?file=/tmp/test.rst``                           |
+|                      |            |                                     |                                                                             |
+|                      |            | When file is omitted,               |                                                                             |
+|                      |            | Then a default index page           |                                                                             |
+|                      |            | will be opened.                     |                                                                             |
++----------------------+------------+-------------------------------------+-----------------------------------------------------------------------------+
+| Refresh window with  |  ``POST``  | ``{file:file.rst, p:pos, dir:dir}`` | ``curl -d file='file.name' -d p='0.3' -p dir='test' http://localhost:5676`` |
+|                      |            |                                     |                                                                             |
+|                      |            | file: the file to show              |                                                                             |
+|                      |            |                                     |                                                                             |
+|                      |            | dir: the static dir                 |                                                                             |
+|                      |            |                                     |                                                                             |
+|                      |            | p: the cursor position              |                                                                             |
+|                      |            |                                     |                                                                             |
+|                      |            | When file/dir is omitted,           |                                                                             |
+| a file and scroll to |  or        | Then will only scroll to            |                                                                             |
+| a position(a float)  |  ``PUT``   | that pos                            |                                                                             |
++----------------------+------------+-------------------------------------+-----------------------------------------------------------------------------+
+| Close Server         | ``DELETE`` |                                     | ``curl -X DELETE http://localhost:5676``                                    |
++----------------------+------------+-------------------------------------+-----------------------------------------------------------------------------+
 
 .. _instantRst.vim: https://github.com/Rykka/InstantRst
 .. _riv.vim: https://github.com/Rykka/riv.vim
