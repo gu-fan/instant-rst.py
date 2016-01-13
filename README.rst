@@ -12,14 +12,14 @@ InstantRst Server
     4. add debug to stop open browser
     5. add error log and error page
 
-This is a server for preview rst document instantly.
+This is a local server for preview rst document instantly.
 
 You can use it with instantRst.vim_
 
 .. figure:: https://github.com/Rykka/github_things/raw/master/image/rst_quick_start.gif
     :align: center
 
-    riv.vim_ (vim) +  InstantRst_ (web server) +  rhythm.css_ (theme)
+    riv.vim_ (vim) +  InstantRst_ (web server) +  mars.css_ (theme)
 
 ----
 
@@ -97,7 +97,7 @@ API
 
 .. _instantRst.vim: https://github.com/Rykka/InstantRst
 .. _riv.vim: https://github.com/Rykka/riv.vim
-.. _rhythm.css: https://github.com/Rykka/rhythm.css
+.. _mars.css: https://github.com/Rykka/mars.css
 .. _InstantRst: https://github.com/Rykka/InstantRst
 
 Issues
