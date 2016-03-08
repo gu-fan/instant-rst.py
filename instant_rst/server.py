@@ -39,8 +39,8 @@ def run(host, port, template_dir, static_dir, additional_dirs, default_file):
 def serve_additional_file(directory, filename):
     print 'ADD_STATIC'
     print ADDITIONAL_DIRS
-    print additional_dir
     for additional_dir in ADDITIONAL_DIRS:
+        print additional_dir
         if additional_dir == directory:
             # send with a file of relative path
             return send_from_directory(
@@ -111,7 +111,6 @@ def page_not_found(e):
 
 @app.errorhandler(500)
 def server_error(e):
-    console.log(e)
     return render_template('500.html', err=e), 500
 
 def shutdown_server():
