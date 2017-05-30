@@ -16,7 +16,7 @@ def post(url, data, headers={}):
         url = url,
         headers = headers
     )
-    f = urllib.request.urlopen(req, urllib.parse.urlencode(data))
+    f = urllib.request.urlopen(req, urllib.parse.urlencode(data).encode('utf-8'))
     con = f.read()
     return {'code':f.getcode(), 'content':con}
 

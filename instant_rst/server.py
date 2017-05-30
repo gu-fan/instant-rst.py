@@ -80,7 +80,7 @@ def index():
             DEFAULT_FILE = f
             print(DEFAULT_FILE)
             with open(f,'r') as rst:
-                d = html_body(rst.read().decode('utf8'))
+                d = html_body(rst.read())
             socketio.emit('updatingContent', {'HTML': d,'p':p})
             return jsonify(success='true',file=f, p=p)
         elif p != '-1':
@@ -100,7 +100,7 @@ def index():
         f = request.args.get('file', DEFAULT_FILE)
         if os.path.isfile(f):
             with open(f,'r') as rst:
-                d = html_body(rst.read().decode('utf8'))
+                d = html_body(rst.read())
                 return render_template('index.html',HTML=d, url=URL)
         else:
             return render_template('index.html', url=URL)
