@@ -1,9 +1,16 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 ''' Simply open browser 1 seconds after start server,
     As we don't want to use hooking
     which need rewrite HttpServer.run() '''
+from __future__ import print_function
+from __future__ import unicode_literals
+from __future__ import division
+from __future__ import absolute_import
+from builtins import int
+from future import standard_library
+standard_library.install_aliases()
 import os
 import sys
 import time
@@ -81,8 +88,8 @@ try:
         default_file=ag.filename
         )
 except:
-    print '\nSome error/exception occurred.'
-    print sys.exc_info()
+    print('\nSome error/exception occurred.')
+    print(sys.exc_info())
     if not ag.debug:
         p.terminate()
     sys.exit()

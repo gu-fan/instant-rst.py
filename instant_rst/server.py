@@ -1,3 +1,11 @@
+from __future__ import print_function
+from __future__ import unicode_literals
+from __future__ import division
+from __future__ import absolute_import
+from builtins import str
+from builtins import open
+from future import standard_library
+standard_library.install_aliases()
 import os, sys
 
 from flask import Flask, render_template, request, url_for, jsonify, send_from_directory
@@ -29,7 +37,7 @@ def run(host, port, template_dir, static_dir, additional_dirs, default_file):
     global DYN_STATIC_DIR
     DEFAULT_FILE = default_file if default_file else DEFAULT_FILE
     DYN_STATIC_DIR = os.path.dirname(DEFAULT_FILE) if os.path.isabs(DEFAULT_FILE) else os.path.join(os.getcwd(), os.path.dirname(DEFAULT_FILE))
-    print DEFAULT_FILE
+    print(DEFAULT_FILE)
 
     # To open port listening on lan ,we should pass host='0.0.0.0' to flask
     socketio.run(app, port=port, host='0.0.0.0')
@@ -37,10 +45,10 @@ def run(host, port, template_dir, static_dir, additional_dirs, default_file):
 
 @app.route("/<path:directory>/<path:filename>")
 def serve_additional_file(directory, filename):
-    print 'ADD_STATIC'
-    print ADDITIONAL_DIRS
+    print('ADD_STATIC')
+    print(ADDITIONAL_DIRS)
     for additional_dir in ADDITIONAL_DIRS:
-        print additional_dir
+        print(additional_dir)
         if additional_dir == directory:
             # send with a file of relative path
             return send_from_directory(
@@ -55,8 +63,8 @@ def serve_additional_file(directory, filename):
 # Dynamically serve static with current directory
 @app.route("/_static/<path:filename>")
 def serve_static_file(filename):
-    print 'DYN_STATIC'
-    print DYN_STATIC_DIR
+    print('DYN_STATIC')
+    print(DYN_STATIC_DIR)
     return send_from_directory(
             DYN_STATIC_DIR, 
             filename)
@@ -68,19 +76,19 @@ def index():
         f = request.form.get('file', '')
         p = request.form.get('p', '-1')
         _dir = request.form.get('dir', '')
-        print f
-        print p
+        print(f)
+        print(p)
         if _dir:
-            print '_DIR'
-            print _dir
+            print('_DIR')
+            print(_dir)
             global DYN_STATIC_DIR
             DYN_STATIC_DIR = _dir if os.path.isabs(_dir) else os.path.join(os.getcwd(), os.path.dirname(_dir))
         if os.path.isfile(f):
             global DEFAULT_FILE
             DEFAULT_FILE = f
-            print DEFAULT_FILE
+            print(DEFAULT_FILE)
             with open(f,'r') as rst:
-                d = html_body(rst.read().decode('utf8'))
+                d = html_body(rst.read())
             socketio.emit('updatingContent', {'HTML': d,'p':p})
             return jsonify(success='true',file=f, p=p)
         elif p != '-1':
@@ -95,12 +103,12 @@ def index():
         shutdown_server()
 
     elif request.method == 'GET':
-        print DEFAULT_FILE
+        print(DEFAULT_FILE)
 
         f = request.args.get('file', DEFAULT_FILE)
         if os.path.isfile(f):
             with open(f,'r') as rst:
-                d = html_body(rst.read().decode('utf8'))
+                d = html_body(rst.read())
                 return render_template('index.html',HTML=d, url=URL)
         else:
             return render_template('index.html', url=URL)
