@@ -1,22 +1,32 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
-import urllib.request, urllib.parse, urllib.error,urllib.request,urllib.error,urllib.parse
+from __future__ import unicode_literals
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
+
+from future import standard_library
+standard_library.install_aliases()
+
+from urllib.parse import urlparse, urlencode
+from urllib.request import urlopen, Request
+from urllib.error import HTTPError
 
 def get(url, headers={}):
-    req = urllib.request.Request(
+    req = Request(
         url = url,
         headers = headers
     )
-    f = urllib.request.urlopen(req)
+    f = urlopen(req)
     con = f.read()
     return {'code':f.getcode(), 'content':con}
 
 def post(url, data, headers={}):
-    req = urllib.request.Request(
+    req = Request(
         url = url,
         headers = headers
     )
-    f = urllib.request.urlopen(req, urllib.parse.urlencode(data).encode('utf-8'))
+    f = urlopen(req, urlencode(data).encode('utf-8'))
     con = f.read()
     return {'code':f.getcode(), 'content':con}
 
