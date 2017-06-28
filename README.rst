@@ -4,6 +4,7 @@ InstantRst Server
 
 :version: 0.9.2.2
 
+
 **WHAT'S NEW**
 
     1. static files are served, the file in the same dir can be get with ``_static/file``
