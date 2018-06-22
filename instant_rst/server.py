@@ -9,7 +9,10 @@ standard_library.install_aliases()
 import os, sys
 
 from flask import Flask, render_template, request, url_for, jsonify, send_from_directory
-from flask.ext.socketio import SocketIO, emit
+try:
+    from flask.ext.socketio import SocketIO, emit
+except ImportError:
+    from flask_socketio import SocketIO, emit
 
 from instant_rst.rst import html_body
 
