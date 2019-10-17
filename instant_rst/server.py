@@ -52,13 +52,17 @@ def serve_additional_file(directory, filename):
     print(ADDITIONAL_DIRS)
     for additional_dir in ADDITIONAL_DIRS:
         print(additional_dir)
-        if additional_dir == directory:
-            # send with a file of relative path
-            return send_from_directory(
-                    os.path.join(os.getcwd(), additional_dir), 
-                    filename)
-        elif os.path.basename(additional_dir) == directory:
+
+        base_dir = os.path.basename(os.path.normpath(additional_dir))
+        if base_dir != directory:
+            continue
+
+        if os.path.isabs(additional_dir):
             return send_from_directory(additional_dir, filename)
+        else:
+            return send_from_directory(
+                    os.path.join(os.getcwd(), additional_dir),
+                    filename)
 
     return '', 404
 
