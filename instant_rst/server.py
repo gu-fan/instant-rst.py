@@ -1,124 +1,98 @@
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import division
-from __future__ import absolute_import
-from builtins import str
-from builtins import open
-from future import standard_library
-standard_library.install_aliases()
-import os, sys
+from flask import Flask, escape, request, render_template, jsonify, send_from_directory
+from flask_socketio import SocketIO
 
-from flask import Flask, render_template, request, url_for, jsonify, send_from_directory
-try:
-    from flask.ext.socketio import SocketIO, emit
-except ImportError:
-    from flask_socketio import SocketIO, emit
+import os, sys, time
 
 from instant_rst.rst import html_body
-
-from instant_rst.config import DEFAULT_FILE, SECRET_KEY,TEMPLATE_DIR,STATIC_DIR
+from instant_rst import settings, util
 
 app = Flask(__name__,
-        static_folder=STATIC_DIR,
-        template_folder=TEMPLATE_DIR)
-# app.debug = True
-app.config['SECRET_KEY'] = SECRET_KEY
+            static_folder=settings.FLASK_STATIC_FOLDER,
+            template_folder=settings.FLASK_TEMPLATE_FOLDER)
+app.config['SECRET_KEY'] = settings.SECRET
+sock = SocketIO(app)
 
-socketio = SocketIO(app)
+# ROUTE
 
-URL = 'http://127.0.0.1:5676'
-ADDITIONAL_DIRS = []
-DYN_STATIC_DIR = ''
-def run(host, port, template_dir, static_dir, additional_dirs, default_file):
-    app.template_folder = template_dir
-    app.static_folder = static_dir
-    global URL
-    URL =  'http://' + host + ':' + str(port)
-    global ADDITIONAL_DIRS
-    ADDITIONAL_DIRS = additional_dirs
-    global DEFAULT_FILE
-    global DYN_STATIC_DIR
-    DEFAULT_FILE = default_file if default_file else DEFAULT_FILE
-    DYN_STATIC_DIR = os.path.dirname(DEFAULT_FILE) if os.path.isabs(DEFAULT_FILE) else os.path.join(os.getcwd(), os.path.dirname(DEFAULT_FILE))
-    print(DEFAULT_FILE)
+@app.route('/', methods=['GET'])
+def index_get():
+    _file = request.args.get('rst', '')
+    if os.path.isfile(_file):
+        with open(_file,'r') as _fo:
+            _doc = html_body(_fo.read())
+            return render_template('index.html', HTML=_doc)
+    else:
+        return render_template('index.html')
 
-    # To open port listening on lan ,we should pass host='0.0.0.0' to flask
-    socketio.run(app, port=port, host='0.0.0.0')
+@app.route('/', methods=['POST', 'PUT'])
+def index_post():
+    print(str(request.form))
+    if util.emit_doc(sock, 
+                    request.form.get('dir',''),
+                    request.form.get('file',''),
+                    request.form.get('pos', '-1')):
+        return jsonify(code=0, msg='success')
+    else:
+        return jsonify(code=2, msg='file not exist', file=request.form.get('file'))
+    return 'error', 502
 
+@app.route('/', methods=['DELETE'])
+def index_delete():
+    sock.emit('die', {'exit': 1})
+    shutdown_server()
+    return 'bye'
 
+# FILES
+
+# serve static with additional directories
 @app.route("/<path:directory>/<path:filename>")
 def serve_additional_file(directory, filename):
-    print('ADD_STATIC')
-    print(ADDITIONAL_DIRS)
-    for additional_dir in ADDITIONAL_DIRS:
-        print(additional_dir)
-
+    for additional_dir in settings.ADDITIONAL_DIRS:
         base_dir = os.path.basename(os.path.normpath(additional_dir))
         if base_dir != directory:
             continue
 
         if os.path.isabs(additional_dir):
             return send_from_directory(additional_dir, filename)
-        else:
-            return send_from_directory(
-                    os.path.join(os.getcwd(), additional_dir),
-                    filename)
+
+    # if empty use the default dir's sub directory
+    if settings.STATIC_DIR and filename:
+        full_path = os.path.join(settings.STATIC_DIR, directory)
+        if os.path.isabs(full_path):
+            return send_from_directory(full_path, filename)
 
     return '', 404
 
 
-# Dynamically serve static with current directory
+# serve static with current directory
 @app.route("/_static/<path:filename>")
+@app.route("/<path:filename>")
 def serve_static_file(filename):
-    print('DYN_STATIC')
-    print(DYN_STATIC_DIR)
-    return send_from_directory(
-            DYN_STATIC_DIR, 
-            filename)
+    print("serve", settings.STATIC_DIR)
+    if settings.STATIC_DIR and filename:
+        return send_from_directory(
+                settings.STATIC_DIR, 
+                filename)
+    else:
+        return '', 404
 
-@app.route("/", methods=['GET','PUT','POST','DELETE'])
-def index():
 
-    if request.method == 'PUT' or request.method == 'POST':
-        f = request.form.get('file', '')
-        p = request.form.get('p', '-1')
-        _dir = request.form.get('dir', '')
-        print(f)
-        print(p)
-        if _dir:
-            print('_DIR')
-            print(_dir)
-            global DYN_STATIC_DIR
-            DYN_STATIC_DIR = _dir if os.path.isabs(_dir) else os.path.join(os.getcwd(), os.path.dirname(_dir))
-        if os.path.isfile(f):
-            global DEFAULT_FILE
-            DEFAULT_FILE = f
-            print(DEFAULT_FILE)
-            with open(f,'r') as rst:
-                d = html_body(rst.read())
-            socketio.emit('updatingContent', {'HTML': d,'p':p})
-            return jsonify(success='true',file=f, p=p)
-        elif p != '-1':
-            socketio.emit('updatingContent', {'p':p})
-            return jsonify(success='true',file=f, p=p)
-        else:
-            return jsonify(success='false',info='File Not Exist',file=f)
+# SOCKET
 
-    elif request.method == 'DELETE':
+@sock.on('file')
+def handler(detail):
+    print('received file: ' + str(detail))
+    util.emit_doc(sock, 
+             detail.get('dir',''),
+             detail.get('file',''),
+             detail.get('pos', ''))
 
-        socketio.emit('die', {'exit': 1})
-        shutdown_server()
+@sock.on('message')
+def handler(message):
+    print('received message: ' + message)
 
-    elif request.method == 'GET':
-        print(DEFAULT_FILE)
 
-        f = request.args.get('file', DEFAULT_FILE)
-        if os.path.isfile(f):
-            with open(f,'r') as rst:
-                d = html_body(rst.read())
-                return render_template('index.html',HTML=d, url=URL)
-        else:
-            return render_template('index.html', url=URL)
+# ERROR
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -129,11 +103,13 @@ def server_error(e):
     return render_template('500.html', err=e), 500
 
 def shutdown_server():
+    # time.sleep(0.5)
+    # settings._p2.terminate()
+    # settings._p2.join()
     exit = request.environ.get('werkzeug.server.shutdown')
     if exit is None:
         sys.exit()
-    exit()
+    else:
+        exit()
 
-@socketio.on('my event')
-def test_message(message):
-    emit('my response', {'data': 'got it!'})
+

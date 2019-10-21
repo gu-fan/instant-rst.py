@@ -2,16 +2,19 @@
 InstantRst Server
 #################
 
-:version: 0.9.2.2
-
+:version: 0.9.9.0
 
 **WHAT'S NEW**
+    TOTALLY REWRITED, now python 3.0 only #22.  and support local image #13
+    will be a stable version.
 
-    1. static files are served, the file in the same dir can be get with ``_static/file``
-    2. The index file will always show from remote's main file
-    3. Improved Style: Using mars.css
-    4. add debug to stop open browser
-    5. add error log and error page
+    only tested on Mac OS, please post issues and PR if have problems.
+
+**DEPRECATED**
+    This is project will no more adding new features
+
+    Future project update will be found in http://github.com/ReadyState/inkup
+
 
 This is a local server for preview rst document instantly.
 

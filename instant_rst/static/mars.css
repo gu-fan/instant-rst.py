@@ -6,6 +6,7 @@ html {
 }
 body {
   margin: 0;
+  padding-top: 30px;
 }
 article,
 aside,
@@ -246,7 +247,7 @@ The right padding separates the table cells. */
 /*}}}*/
 body {
   font-family: 'Sentinel SSm A', 'Sentinel SSm B', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-  font-size: 18px;
+  font-size: 20px;
 }
 h1,
 h2,
@@ -710,7 +711,7 @@ pre.code.literal-block {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   border: 1px dotted #CCCCB4;
   color: #FAF7ED;
-  background-color: #141412;
+  background-color: #555;
 }
 tt.literal {
   padding: 3px;

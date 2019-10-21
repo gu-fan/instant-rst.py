@@ -1,6 +1,6 @@
-This is a Tiger
+This is a Test
 ===============
 
-Hello Tiger
+Test
 
 .. image:: _static/tiger.jpg
