@@ -2,19 +2,22 @@
 InstantRst Server
 #################
 
-:version: 0.9.9.0
+:version: 0.9.9.1
+
 
 **WHAT'S NEW**
-    TOTALLY REWRITED, now python 3.0 only #22.  and support local image #13
-    will be a stable version.
 
-    only tested on Mac OS, please post issues and PR if have problems.
+TOTALLY REWRITED, now python 3.0 only #22.  and support local image #13
+
+will be a stable version.
+
+only tested on Mac OS, please post issues and PR if have problems.
 
 **DEPRECATED**
-    This is project will no more adding new features
 
-    Future project update will be found in http://github.com/ReadyState/inkup
+This is project will no more adding new features
 
+Future project update will be found in http://github.com/ReadyState/inkup
 
 This is a local server for preview rst document instantly.
 
@@ -25,7 +28,6 @@ You can use it with instantRst.vim_
 
     riv.vim_ (vim) +  InstantRst_ (web server) +  mars.css_ (theme)
 
-----
 
 Install
 =======
@@ -34,6 +36,7 @@ Install
 
    # Got some issue on pypi
    # sudo pip install instant-rst
+
    sudo pip install https://github.com/Rykka/instant-rst.py/archive/master.zip
 
 Usage
