@@ -6,6 +6,11 @@ InstantRst Server
 
 
 **WHAT'S NEW**
+<<<<<<< HEAD
+=======
+    TOTALLY REWRITED, now python 3.0 only _#22 .  and support local image _#13
+    will be a stable version.
+>>>>>>> 62f7752947a24c02135610e9e2e1b61678244427
 
 TOTALLY REWRITED, now python 3.0 only #22.  and support local image #13
 
