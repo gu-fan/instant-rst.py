@@ -5,7 +5,7 @@ InstantRst Server
 :version: 0.9.9.0
 
 **WHAT'S NEW**
-    TOTALLY REWRITED, now python 3.0 only #22.  and support local image #13
+    TOTALLY REWRITED, now python 3.0 only #22 .  and support local image #13
     will be a stable version.
 
     only tested on Mac OS, please post issues and PR if have problems.
