@@ -37,7 +37,7 @@ Install
    # Got some issue on pypi
    # sudo pip install instant-rst
 
-   sudo pip install https://github.com/Rykka/instant-rst.py/archive/master.zip
+   sudo pip3 install https://github.com/Rykka/instant-rst.py/archive/master.zip
 
 Usage
 =====
