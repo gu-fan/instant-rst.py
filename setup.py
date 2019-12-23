@@ -74,7 +74,7 @@ setup(
     # package_data={
     #     'scripts': ['scripts/instantRst.py'],
     # },
-    package_data={'static': ['*.css'],
+    package_data={'static': ['*.css', '*.js'],
                 'templates':['*.html', '*.rst']},
     # package_data = {
     #     '': ['*.txt', '*.rst','*.css','*.html'],

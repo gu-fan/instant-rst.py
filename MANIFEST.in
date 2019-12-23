@@ -1,5 +1,6 @@
 include README.rst
 include instant_rst/static/*.css
+include instant_rst/static/*.js
 include instant_rst/templates/*.html
 include instant_rst/templates/*.rst
 include scripts/instantRst
