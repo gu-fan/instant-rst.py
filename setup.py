@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages  # Always prefer setuptools over distutils
+from setuptools import setup  # Always prefer setuptools over distutils
 from codecs import open  # To use a consistent encoding
 from os import path
 
@@ -51,7 +51,7 @@ setup(
 
     # now require 3.6+
     python_requires='>=3.6',
-    
+
 
     # What does your project relate to?
     keywords='rst docutils preview',
@@ -66,7 +66,13 @@ setup(
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
-    install_requires=['flask>=2.1.1','docutils', 'pygments','flask-socketio>=5.1.1'],
+    install_requires=[
+        'flask>=2.0.1',
+        'docutils',
+        'pygments',
+        'flask-socketio>=5.1.1',
+        'scriptconfig'
+    ],
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
@@ -75,7 +81,7 @@ setup(
     #     'scripts': ['scripts/instantRst.py'],
     # },
     package_data={'static': ['*.css', '*.js'],
-                'templates':['*.html', '*.rst']},
+                  'templates': ['*.html', '*.rst']},
     # package_data = {
     #     '': ['*.txt', '*.rst','*.css','*.html'],
     # },
@@ -88,7 +94,13 @@ setup(
     #                                     'instant_rst/templates/index.rst'])],
 
     include_package_data=True,
-    scripts=['scripts/instantRst'],
+
+    entry_points={
+        'console_scripts': [
+            'instantRst  = instant_rst.main:run',
+            'instant-rst = instant_rst.main:run',
+        ],
+    },
 
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow

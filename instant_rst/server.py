@@ -1,7 +1,8 @@
-from flask import Flask, escape, request, render_template, jsonify, send_from_directory
+from flask import Flask, request, render_template, jsonify, send_from_directory
 from flask_socketio import SocketIO
 
-import os, sys, time
+import os
+import sys
 
 from instant_rst.rst import html_body
 from instant_rst import settings, util
@@ -9,32 +10,36 @@ from instant_rst import settings, util
 app = Flask(__name__,
             static_folder=settings.FLASK_STATIC_FOLDER,
             template_folder=settings.FLASK_TEMPLATE_FOLDER)
-app.config['SECRET_KEY'] = settings.SECRET
+
+app.config['SECRET_KEY'] = settings.get_secret()
 sock = SocketIO(app)
 
 # ROUTE
+
 
 @app.route('/', methods=['GET'])
 def index_get():
     _file = request.args.get('rst', '')
     if os.path.isfile(_file):
-        with open(_file,'r') as _fo:
+        with open(_file, 'r') as _fo:
             _doc = html_body(_fo.read())
             return render_template('index.html', HTML=_doc)
     else:
         return render_template('index.html')
 
+
 @app.route('/', methods=['POST', 'PUT'])
 def index_post():
     print(str(request.form))
-    if util.emit_doc(sock, 
-                    request.form.get('dir',''),
-                    request.form.get('file',''),
-                    request.form.get('pos', '-1')):
+    if util.emit_doc(sock,
+                     request.form.get('dir', ''),
+                     request.form.get('file', ''),
+                     request.form.get('pos', '-1')):
         return jsonify(code=0, msg='success')
     else:
         return jsonify(code=2, msg='file not exist', file=request.form.get('file'))
     return 'error', 502
+
 
 @app.route('/', methods=['DELETE'])
 def index_delete():
@@ -43,6 +48,7 @@ def index_delete():
     return 'bye'
 
 # FILES
+
 
 # serve static with additional directories
 @app.route("/<path:directory>/<path:filename>")
@@ -71,7 +77,7 @@ def serve_static_file(filename):
     print("serve", settings.STATIC_DIR)
     if settings.STATIC_DIR and filename:
         return send_from_directory(
-                settings.STATIC_DIR, 
+                settings.STATIC_DIR,
                 filename)
     else:
         return '', 404
@@ -80,12 +86,13 @@ def serve_static_file(filename):
 # SOCKET
 
 @sock.on('file')
-def handler(detail):
+def file_handler(detail):
     print('received file: ' + str(detail))
-    util.emit_doc(sock, 
-             detail.get('dir',''),
-             detail.get('file',''),
-             detail.get('pos', ''))
+    util.emit_doc(sock,
+                  detail.get('dir', ''),
+                  detail.get('file', ''),
+                  detail.get('pos', ''))
+
 
 @sock.on('message')
 def handler(message):
@@ -98,11 +105,14 @@ def handler(message):
 def page_not_found(e):
     return render_template('404.html'), 404
 
+
 @app.errorhandler(500)
 def server_error(e):
     return render_template('500.html', err=e), 500
 
+
 def shutdown_server():
+    # import time
     # time.sleep(0.5)
     # settings._p2.terminate()
     # settings._p2.join()
@@ -111,5 +121,3 @@ def shutdown_server():
         sys.exit()
     else:
         exit()
-
-

@@ -1,6 +1,7 @@
-from docutils import core, io
+from docutils import core
 
-def html_parts(input_string, source_path=None,   
+
+def html_parts(input_string, source_path=None,
                destination_path=None,
                input_encoding='unicode', doctitle=True,
                initial_header_level=1):

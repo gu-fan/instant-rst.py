@@ -46,7 +46,7 @@ usage: instantRst [-h] [-f FILENAME] [-b BROWSER] [-p PORT] [-s STATIC_DIR] [-t 
 
 optional arguments:
 
--h, --help          
+-h, --help
                     show this help message and exit
 -f FILENAME, --file FILENAME
                     The local filename for Converting
@@ -55,16 +55,16 @@ optional arguments:
                     Default is '' for using system default
 -p PORT, --port PORT  The port for server to use
                       Default is '5676'
--t TEMPLATE_DIR, --template-dir TEMPLATE_DIR 
-                      Directory containing a template to 
-                      be used when rendering the output. 
-                      Defaults to a bundled rhythm.css_
--s STATIC_DIR, --static-dir STATIC_DIR 
-                      The directory containing static 
+-t TEMPLATE_DIR, --template-dir TEMPLATE_DIR
+                      Directory containing a template to
+                      be used when rendering the output.
+                      Defaults to a bundled ``rhythm.css_``
+-s STATIC_DIR, --static-dir STATIC_DIR
+                      The directory containing static
                       files used by the template.
-                      Defaults to a bundled rhythm.css_
--l, --localhost-only  
-                      Only use localhost, disable lan ip 
+                      Defaults to a bundled ``rhythm.css_``
+-l, --localhost-only
+                      Only use localhost, disable lan ip
                       default: False
 
 -d, --additional-dir
@@ -130,7 +130,7 @@ STATIC FILES
 0. Default Static file:
 
    the ``static/main.css|js`` is served there
-   
+
    The instant rst's default theme is set there.
 
    You can pass the ``-s`` for default static directory.
@@ -154,7 +154,7 @@ STATIC FILES
    When using with dynamic files, you can post with '-dir=DYN_DIR_NAME' to update the ``DYN_STATIC_DIR``
 
    e.g.:
-       
+
        You have a file named ``test/test.jpg``
 
        When you start instantRst ``instantRst -f test/test.rst``
@@ -162,7 +162,7 @@ STATIC FILES
        The file is served with ``localhost:5676/_static/test.jpg``
 
        When you switch to another file like ``test1/test.rst``
-       Then you can post with ``dir=test1`` or ``dir=~/rst/test1`` to change 
+       Then you can post with ``dir=test1`` or ``dir=~/rst/test1`` to change
        the static dir.
 
 Develop
@@ -171,8 +171,8 @@ Develop
 Contribution are welcomed.
 
 git clone the project::
-    
-    git clone 
+
+    git clone
 
 install local package::
 
@@ -180,8 +180,8 @@ install local package::
 
 start test with local package::
 
-    # localhost:5676
-    python scripts/instantRst --debug -f test/test.rst
+    # localhost:5000
+    python -m instant_rst -f README.rst
 
 change to static/template file should change setup.py and manifest.in
 
